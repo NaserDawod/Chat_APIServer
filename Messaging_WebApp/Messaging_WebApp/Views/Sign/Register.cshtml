@@ -1,0 +1,38 @@
+﻿@* @model TModel *@
+@model User
+@{
+    Layout = "_Authenticate";
+}
+
+<div class="login-page">
+<div class="form" id="myAnchor">
+    <form asp-action="Register" class="login-form">
+        <h1>Sign Up</h1>
+        <p>Please fill in this form to create an account.</p>
+        <hr>
+
+        <label for="username">
+        <b class="reglabels">Username</b>
+        </label>
+        <input asp-for="Username" type="text" placeholder="Enter Username"  required minlength="1" maxlength="20">
+
+        <label for="nickname">
+        <b class="reglabels">Nickname</b>
+        </label>
+        <input asp-for="Name" type="text" placeholder="Enter nickname" name="nickname" id="nickname" required minlength="1" maxlength="20">
+          
+        <label for="psw">
+        <b class="reglabels">Password</b>
+        </label>
+        <input asp-for="Password" placeholder="Enter Password" id="password" required minlength="1" maxlength="20">
+        <span asp-validation-for="Password" class="text-danger"></span>   
+        
+        <button type="submit" class="signupbtn" data-bs-dismiss="modal" onclick="adduser()">Sign Up</button>
+        <p>Already Registerd? click <a asp-action="Login">here</a> to Login</p>
+    </form>
+    @if(ViewBag.error != null) {
+            <p class="message wrong wrong-show">@ViewBag.error</p>
+     }
+    
+    </div>
+</div>     
